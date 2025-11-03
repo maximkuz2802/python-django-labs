@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Архив статей</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 30px auto; background: #f2f2f2; }
+    .header { text-align: center; margin-bottom: 20px; }
+    .one-post { background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    .post-title { margin: 0 0 8px 0; color: #2c3e50; }
+    .article-info { color:#666; font-size: 14px; margin-bottom: 10px; }
+    .article-text { color:#333; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Архив статей</h1>
+  </div>
+
+  {% for post in posts %}
+    <div class="one-post">
+      <h2 class="post-title">{{ post.title }}</h2>
+      <div class="article-info">
+        Автор: <strong>{{ post.author.username }}</strong> | Дата: {{ post.created_date }}
+      </div>
+      <div class="article-text">{{ post.text }}</div>
+    </div>
+  {% empty %}
+    <p>Пока нет статей.</p>
+  {% endfor %}
+</body>
+</html>
